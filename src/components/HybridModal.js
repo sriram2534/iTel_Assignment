@@ -45,13 +45,13 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export const HybridModal =({showHModal, setShowHModal})=>{
+export const HybridModal =({showHModal, setShowHModal, onSave})=>{
     return (
         <>
         {showHModal ? (
         <Background>
             
-                <FormHybrid showHModal={showHModal}>
+                <FormHybrid showHModal={showHModal} toggleModal={setShowHModal} onSave={onSave}>
                </FormHybrid> 
                <CloseModalButton aria-label='Close modal' onClick={()=> setShowHModal
                 (prev=> !prev)}/>

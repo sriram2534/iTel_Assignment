@@ -20,6 +20,7 @@ import { Modal } from '../Modal';
 import {GasModel} from '../GasModel';
 import {HybridModal} from '../HybridModal';
 function MainLinks() {
+    const [formData, setFormData] = useState({electric: [], gas: [], hybrid: []})
     const [showModal,setShowModal] = useState(false);
     const openModal = () => {
         setShowModal(prev => !prev);
@@ -32,6 +33,13 @@ function MainLinks() {
     const openHModal = () => {
         setShowHModal(prev => !prev);
     };
+
+  const saveClickHandler = (data, type) => {
+    const updatedForm = {...formData}
+    updatedForm[type] = formData[type].concat(data)
+    setFormData(updatedForm)
+  }
+
   return (
     <IconContext.Provider value={{ color: '#a9b3c1', size: 64 }}>
       <PricingSection>
@@ -47,7 +55,7 @@ function MainLinks() {
                
               </PricingCardInfo>
             </PricingCard>
-            <Modal showModal={showModal} setShowModal={setShowModal}/>
+            <Modal showModal={showModal} setShowModal={setShowModal} onSave={saveClickHandler}/>
             
             <PricingCard onClick={openGModal}>
               <PricingCardInfo>
@@ -58,7 +66,7 @@ function MainLinks() {
                
               </PricingCardInfo>
             </PricingCard>
-            <GasModel showGModal={showGModal} setShowGModal={setShowGModal}/>
+            <GasModel showGModal={showGModal} setShowGModal={setShowGModal} onSave={saveClickHandler}/>
             <PricingCard onClick={openHModal}>
                 <PricingCardIcon>
                   <GoArrowBoth/>
@@ -66,13 +74,36 @@ function MainLinks() {
                 <PricingCardPlan>Hybrid</PricingCardPlan>
    
             </PricingCard>
-            <HybridModal showHModal={showHModal} setShowHModal={setShowHModal}/>
+            <HybridModal showHModal={showHModal} setShowHModal={setShowHModal} onSave={saveClickHandler}/>
           </PricingContainer>
         </PricingWrapper>
       </PricingSection>
-      <InfoLabel>
-          Information label
+      <div>
+          <InfoLabel>
+            <h1>Information label</h1>
           </InfoLabel>
+          {formData.electric.map(({make}) => {
+            return (
+            <div>
+              <h4>{make}</h4>
+            </div>
+            )
+          })}
+          {formData.gas.map(({make}) => {
+            return (
+            <div>
+              <h4>{make}</h4>
+            </div>
+            )
+          })}
+          {formData.hybrid.map(({make}) => {
+            return (
+            <div>
+              <h4>{make}</h4>
+            </div>
+            )
+          })}
+        </div>
     </IconContext.Provider>
   );
 }

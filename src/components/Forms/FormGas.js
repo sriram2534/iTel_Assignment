@@ -3,11 +3,13 @@ import './Form.css';
 import FormGdata from './FormGdata';
 import FormSuccess from './FormSuccess';
 
-const FormGas = () => {
+const FormGas = ({toggleModal, onSave}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function submitForm() {
+  function submitForm(values) {
+    onSave(values, 'gas');
     setIsSubmitted(true);
+    toggleModal()
   }
   return (
     <>

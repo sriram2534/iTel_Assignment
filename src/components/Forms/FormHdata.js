@@ -6,7 +6,8 @@ import './Form.css';
 const FormHdata = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
+    'hybrid'
   );
 
   return (

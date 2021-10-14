@@ -46,13 +46,13 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export const GasModel =({showGModal, setShowGModal})=>{
+export const GasModel =({showGModal, setShowGModal, onSave})=>{
     return (
         <>
         {showGModal ? (
         <Background>
             
-                <FormGas showGModal={showGModal}>
+                <FormGas showGModal={showGModal} toggleModal={setShowGModal} onSave={onSave}>
                </FormGas> 
                <CloseModalButton aria-label='Close modal' onClick={()=> setShowGModal
                 (prev=> !prev)}/>

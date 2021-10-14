@@ -4,11 +4,13 @@ import FormHdata from './FormHdata';
 
 import FormSuccess from './FormSuccess';
 
-const FormHybrid = () => {
+const FormHybrid = ({toggleModal, onSave}) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  function submitForm() {
+  function submitForm(values) {
     setIsSubmitted(true);
+    onSave(values, 'hybrid');
+    toggleModal()
   }
   return (
     <>

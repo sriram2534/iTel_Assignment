@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 
-const useForm = (callback, validate) => {
+const useForm = (callback, validate, type) => {
   const [values, setValues] = useState({
-    Year: '',
-    Make: '',
-    Model: '',
-    Trim: '',
-    Charge_Time:0,
-    Max_km:0,
+    year: '',
+    make: '',
+    model: '',
+    trim: '',
+    charge_time:0,
+    max_km:0,
     fuel_consumption:0,
     warranty:''
   });
@@ -24,10 +24,12 @@ const useForm = (callback, validate) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-
-    setErrors(validate(values));
-    setIsSubmitting(true);
-    
+    const formErrors = validate(values, type)
+    setErrors(formErrors);
+    if(!Object.keys(formErrors).length) {
+      setIsSubmitting(true);
+      callback(values)
+    }    
   };
 
   const handleCancel = e => {
@@ -37,7 +39,7 @@ const useForm = (callback, validate) => {
   useEffect(
     () => {
       if (Object.keys(errors).length === 0 && isSubmitting) {
-        callback();
+        // callback(values);
       }
     },
     [errors]

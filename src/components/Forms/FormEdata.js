@@ -7,7 +7,8 @@ import Home from '../../pages/Home/Home.js';
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
+    'electric'
   );
   const [showModal,setShowModal]= useState(true);
 

@@ -6,7 +6,8 @@ import './Form.css';
 const FormGdata = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
+    'gas'
   );
 
   return (
@@ -70,7 +71,7 @@ const FormGdata = ({ submitForm }) => {
             type='number'
             name='fuel_consumption'
             placeholder='Fuel Consumption per 100km'
-            value={values.charge_time}
+            value={values.fuel_consumption}
             onChange={handleChange}
           />
           {errors.fuel_consumption && <p>{errors.fuel_consumption}</p>}

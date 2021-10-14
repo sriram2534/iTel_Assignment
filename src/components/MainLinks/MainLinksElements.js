@@ -116,7 +116,7 @@ export const PricingCardFeature = styled.li`
 
 export const InfoLabel = styled.div`
 box: border-border;
-height: 200px;
+height: 60px;
 display: flex;
-margin-top: -100px;
+/* margin-top: -100px; */
 `

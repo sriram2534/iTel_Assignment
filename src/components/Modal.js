@@ -45,20 +45,16 @@ const CloseModalButton = styled(MdClose)`
   z-index: 10;
 `;
 
-export const Modal =({showModal, setShowModal})=>{
+export const Modal =({showModal, setShowModal, onSave})=>{
   
     return (
         <>
         {showModal ? (
-        <Background>
-            
-                <FormElectric showModal={showModal}/>
-               
-               <CloseModalButton aria-label='Close modal' onClick={()=> setShowModal
-                (prev=> !prev)}/>
+        <Background>            
+          <FormElectric showModal={showModal} toggleModal={setShowModal} onSave={onSave}/>               
+          <CloseModalButton aria-label='Close modal' onClick={()=> setShowModal(prev=> !prev)}/>
         </Background>
-        ):null}
-        
+        ) : null }        
         </>
     );
 };
