@@ -36,7 +36,7 @@ function MainLinks() {
     <IconContext.Provider value={{ color: '#a9b3c1', size: 64 }}>
       <PricingSection>
         <PricingWrapper>
-          <PricingHeading>My Interests</PricingHeading>
+          
           <PricingContainer>
           <PricingCard onClick={openModal}>
               <PricingCardInfo>

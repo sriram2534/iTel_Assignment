@@ -27,11 +27,7 @@ export const PricingWrapper = styled.div`
   }
 `;
 
-export const PricingHeading = styled.h1`
-  color: #fff;
-  font-size: 48px;
-  margin-bottom: 20px;
-`;
+
 
 export const PricingContainer = styled.div`
   display: flex;
